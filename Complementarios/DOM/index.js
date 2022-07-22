@@ -10,6 +10,6 @@ for (item of productos) {
     let li = document.createElement("li")
     li.innerHTML = `<h2>ID ${item.id}</h2>
                     <strong>Nombre: ${item.nombre}
-                    <p>Precio: ${item.precio}`;
+                    <p>Precio: $${item.precio}`;
     contenedor.append(li)
 }
