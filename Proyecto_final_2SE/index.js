@@ -1,8 +1,13 @@
+// declarando algunas variables para su futuro uso
 let iconos = []
 let selecciones = []
 
+// llamando a la funcion para que empiece el juego
 generarTablero()
 
+const btnClick = document.getElementById("btn-click")
+
+// cargando los iconos de las tarjetas de font awesome - tuve que utilizar los mismo de referencia porque los nuevos no me los tomaba
 function cargarIconos() {
     iconos = [
         '<i class="fas fa-star"></i>',
@@ -20,6 +25,7 @@ function cargarIconos() {
     ]
 }
 
+// generando el tablero con las cartas ya desordenadas y en pares
 function generarTablero() {
     cargarIconos()
     selecciones = []
@@ -46,6 +52,7 @@ function generarTablero() {
     tablero.innerHTML = tarjetas.join("")
 }
 
+// seleccionando y comparando las cartas para encontrar las iguales
 function seleccionarTarjeta(i) {
     let tarjeta = document.getElementById("tarjeta" + i)
     if (tarjeta.style.transform != "rotateY(180deg)") {
@@ -58,6 +65,7 @@ function seleccionarTarjeta(i) {
     }
 }
 
+// si no son las mismas voltearlas de nuevo para seguir con el juego
 function deseleccionar(selecciones) {
     setTimeout(() => {
         let trasera1 = document.getElementById("trasera" + selecciones[0])
