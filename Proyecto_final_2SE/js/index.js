@@ -11,13 +11,27 @@ let cronometro = 30;
 let cronometroInicial = cronometro
 let tiempoRestante;
 
+
+
 //conectando con el HTML
 let mostrarMovimientos = document.getElementById("movimientos")
 let mostrarAciertos = document.getElementById("aciertos")
 let mostrarTemporizador = document.getElementById("tRestante")
 
 //mezclar los numeros a mostrar
-let numero = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+let numero =[]
+
+const traer = async() => {
+    const rsp = await fetch("./json/main.json")
+    const solucion = await rsp.json();
+
+    solucion.forEach(carta => {
+        numero.push(carta)        
+    });    
+}
+traer()
+
+// ahora no puedo conseguir que me los desordene
 numero = numero.sort(() => {return Math.random()-0.5});
 console.log(numero);
 
@@ -28,8 +42,8 @@ function contador(){
         mostrarTemporizador.innerHTML = `Tiempo restante:<br>${cronometro} segundos`;
         if (cronometro == 0){
             clearInterval(tiempoRestante);
-            finDelJuego()
-            swal("lo siento se termino el tiempo")
+            finDelJuego();
+            swal ( "Oops" ,  "Se acabo el tiempo, vuelve a intentarlo" ,  "error" );
         }
     }, 1000);
 }
@@ -40,7 +54,6 @@ function finDelJuego(){
         let bloquearTarjetas = document.getElementById(i);
         bloquearTarjetas.innerHTML = numero[i];
         bloquearTarjetas.disabled = true;
-
     }
 }
 
@@ -87,7 +100,8 @@ function mostrar(id){
 
             if (aciertos == 8) {
                 clearInterval(tiempoRestante);
-                swal("Buen trabajo!", `Te demoraste ${cronometroInicial - cronometro} segndos en resolverlo`, "success");
+                swal("Buen trabajo!", `Te demoraste ${cronometroInicial - cronometro} segundos en resolverlo`, "success");
+                
             }
         }else
             //mostrar momentaneamente y ocultarlos de nuevo si no son iguales
