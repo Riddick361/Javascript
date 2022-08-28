@@ -8,7 +8,8 @@
     <title>Juego de memoria</title>
 </head>
 <body>
-    <main>
+    <h3 id="titulo" class="encabezado"></h3>
+    <main>        
         <section class="section1">
             <h1>Juego de Memoria</h1>
             <table>
@@ -39,11 +40,16 @@
             </table>
         </section>
         <section class="section2">
+            <img src="./img/" alt="">
             <h2 id="aciertos" class="estadisticas">Aciertos:<br>0</h2>
-            <h2 id="tRestante" class="estadisticas">Tiempo restante:<br>30 segundos</h2>
+            <h2 id="tRestante" class="estadisticas">Tiempo restante:<br>35 segundos</h2>
             <h2 id="movimientos" class="estadisticas">Movimientos:<br>0</h2>
-        </section>
+            
+        </section>        
     </main>
+    <section class="btn_reset">
+        <button class="reseteo" id="reseteo">jugar de nuevo</button>
+    </section>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./js/index.js"></script>
 </body>
