@@ -15,8 +15,7 @@ let perderAudio = new Audio("./sound/perder.wav");
 let selectAudio = new Audio ("./sound/selec.wav");
 let errorAudio = new Audio ("./sound/error.wav");
 let bienAudio = new Audio ("./sound/bien.wav");
-let nombre = localStorage.getItem('nombre');
-let titulo = document.getElementById("titulo");
+
 
 
 //conectando con el HTML
@@ -24,6 +23,8 @@ let mostrarMovimientos = document.getElementById("movimientos");
 let mostrarAciertos = document.getElementById("aciertos");
 let mostrarTemporizador = document.getElementById("tRestante");
 let reseteo = document.getElementById("reseteo");
+let nombre = localStorage.getItem('nombre');
+let titulo = document.getElementById("titulo");
 
 //si utilizo la funcion traer me crea el arreglo pero no me permite desordenarlo sino que me los muestra en orden
 /*let numero =[];
@@ -99,11 +100,10 @@ function comenzarJuego(){
         temporizador = false;
         cronometro = 35;
         mostrarTemporizador.innerHTML = `Tiempo restante:<br>${cronometro} segundos`;
-        mostrar(id);
-    } 
-    
-    
+        numero = numero.sort(() => {return Math.random()-0.5});      
+    }     
 }
+
 //click del boton juego nuevo para comenzar a ejecutar el juego de nuevo
 reseteo.addEventListener("click", () => comenzarJuego());
 
